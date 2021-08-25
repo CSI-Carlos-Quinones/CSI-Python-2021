@@ -139,11 +139,11 @@ What does "cd" stand for?
 
 Did you get stuck at any point or become confused with your console? (yes/no) If so, what happened? How did you solve it?
 
- - Answer:NO
+ - Answer:No
 
 Did you consider searching google for other commands to run? What did you try? 
 
- - Answer:
+ - Answer:Yes i searched how to do an if else in python and added it to the Hello World.py
 
 What would you like to program? 
 
