@@ -1,4 +1,7 @@
 from datetime import datetime
+from pathlib import Path
+
+exec(open(Path(__file__).parents[2].joinpath("images/Logo.py")).read())
 
 now = datetime.now()
 current_time = now.strftime("%H:%M:%S")
