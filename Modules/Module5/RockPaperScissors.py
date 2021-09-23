@@ -26,6 +26,7 @@ def game():
         if(myWeponChoice == "Rock"):
             won()
         if(myWeponChoice == "Paper"):
-            lost()
-
+            lost()  
+    if(myWeponChoice != "Rock" or "Paper" or "Scissor"):
+        print("You wrote something wrong bruh")
 game()

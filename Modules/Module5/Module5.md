@@ -72,8 +72,15 @@ Give a python example for each logic operator in the module image.
 
  - Answers:
    - OR:
+   if(grade == C or grade == D):
+    print("Te colgastes!")
    - AND: 
+    if(food == rice and drink == CocaCola):
+      print("Perfect meal!")
    - NOT: 
+   if(crosswalkLigth not "Red"):
+      print("GO")
+          
 
 
 Type down any class notes below this sentence:
