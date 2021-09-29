@@ -12,3 +12,6 @@ import random
 foo = ['firstValue', 'secondValue', 'anotherValue']
 computerChoice = random.choice(foo)
 print(computerChoice)
+
+
+

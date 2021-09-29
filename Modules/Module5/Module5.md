@@ -78,7 +78,7 @@ Give a python example for each logic operator in the module image.
     if(food == rice and drink == CocaCola):
       print("Perfect meal!")
    - NOT: 
-   if(crosswalkLigth not "Red"):
+   if(not(crosswalkLigth =="Red" and crosswalkLigth =="Yellow")):
       print("GO")
           
 
