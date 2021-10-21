@@ -1,0 +1,9 @@
+{
+    "gun": "SV-98 bolt-action sniper rifle",
+    "cartridgeCalibre": "7.62x54mmR",
+    "bulletRound": "7.62x54R LPS gzh",
+    "projectileVelocity": 865,
+    "building": "30 St. Mary Axe",
+    "buildingHeight": 179.8015,
+    "gravity": 9.8
+}
