@@ -3,7 +3,7 @@ import json
 from ExperimentalData import ExperimentalData
 from pathlib import Path
 import os
-import math
+
 
 
 # gun = "SV-98 bolt-action sniper rifle"
