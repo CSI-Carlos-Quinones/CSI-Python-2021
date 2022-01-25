@@ -6,6 +6,7 @@
 </div>
 <br>
 
+
 # Do Code 
 * Your script must be fully documented (`# Inline documentation at every step`).
 * HTTP Request & stuff
