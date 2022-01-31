@@ -12,4 +12,3 @@ class RandomHipsterStuff:
         self.paragraphs = paragraphs
 
 
-    
