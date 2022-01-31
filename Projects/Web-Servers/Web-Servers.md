@@ -6,8 +6,6 @@
 </div>
 <br>
 
-
-# Do Code 
 # API Calls
 * Your script must be fully documented (`# Inline documentation at every step`).
 
