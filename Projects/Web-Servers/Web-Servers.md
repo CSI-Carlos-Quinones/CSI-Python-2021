@@ -8,6 +8,7 @@
 
 
 # Do Code 
+# API Calls
 * Your script must be fully documented (`# Inline documentation at every step`).
 
 ### Select the API you will be using from [Random Data API](https://random-data-api.com/documentation)
