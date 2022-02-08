@@ -19,7 +19,7 @@ path = os.path.join(parent_dir, directory)
 os.mkdir(path, mode)
 save_path = r"C:\Users\carlo\Documents\CSI-Python-2021\Projects\Web-Servers\Responses"
 
-for x in range(0,100):
+for x in range(0,10001):
     req = urllib.request.Request(hipUrl)
     requestData = json.loads(urllib.request.urlopen(req).read())
     for r in requestData:  
