@@ -17,10 +17,14 @@ myHipster = RandomHipsterStuff(**requestData)
 
 
 hipAr = myHipster.words
+count = 0
+hipWord = hipAr[0]
+correctIndex=[]
 
 specialChar = ["!","@","#","$","%","^","&","*","(",")","-","+","[","}","{","]","="]
 guessedWords= []
 correctWords=[]
+finished = False
 def getInput() :
     while(True):
      
@@ -36,9 +40,9 @@ def getInput() :
         if not guess.isalpha():
             print("Can't include special characters")
             continue
-        if(guess in guessedWords):
-            print("Bruh you already guessed it fracaso")
-            continue
+       # if(guess in guessedWords):
+           # print("Bruh you already guessed it fracaso")
+            #continue
         return guess
 
 def Ronda(hipAr):
@@ -47,10 +51,21 @@ def Ronda(hipAr):
         
   
      answeLine = ""
-     for x in range(lengthOfWord):
-           
-           answeLine = answeLine + "___   "
+     
+     for letra in correctWords:
+         hipWord.index(letra)
          
+         correctIndex.append(hipWord.index(letra))
+         print(correctIndex)
+        
+     for x in range(lengthOfWord):
+
+        if(x in correctIndex):
+         answeLine = answeLine + f"_{list(hipWord)[x]}__   "
+        else:
+         answeLine = answeLine + "___   "
+           
+   
      print(""" 
      _____________
      |/      |
@@ -63,29 +78,47 @@ def Ronda(hipAr):
    """)
      print(f"Im thinking of a {lengthOfWord} letter word")
      print(answeLine)
+     print(hipWord)    
      guess = getInput()
      
      hipLetters = list(hipWord)
+     print(hipLetters)
      for letter in hipLetters:
+                
                 if(guess == letter ):
                     time.sleep(2)
-                    
                     correct = True
-                    correctWords.append(guess)
+                   
+                   
+                    
                     
                     break
                 else:
-                   guessedWrong = guess
+                   
                    correct = False
 
-                   break
+                   
+    
      guessedWords.append(guess)
-     
-
      if(correct):
             print("You guessed rigth")
+            correctWords.append(guess)
      else:
             print("You guessed wrong")
+            guessedWrong = guess
+
+ 
+     count = 0       
+     
+     
+     
+     if len(hipWord)==len(correctWords) :
+         finished = True
+     else :
+         finished = False
+    
+
+     
 
 
 
@@ -95,8 +128,19 @@ def StartGame(hipAr):
     if(welcome == "yes"):
         print("lets get started!!")
         time.sleep(1)
-        Ronda(hipAr)
+        for j in range(0,100):
+            Ronda(hipAr)
+            if len(hipWord)==len(correctWords) :
+                 break
+            
+            
+             
+        print("game done")
+
+
     
+
+       
            
     else:
         print("awww")
