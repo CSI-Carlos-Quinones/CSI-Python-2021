@@ -4,22 +4,161 @@ from multiprocessing.connection import wait
 import random
 import urllib.request
 import json
+from xml.sax import parseString
 from RandomHipsterStuff import RandomHipsterStuff
 import time
-
-hipUrl = "https://random-data-api.com/api/hipster/random_hipster_stuff"
-
-
-req = urllib.request.Request(hipUrl)
-requestData = json.loads(urllib.request.urlopen(req).read())
-
-myHipster = RandomHipsterStuff(**requestData)
+import sys 
 
 
-hipAr = myHipster.words
+
+
+
+def delDuplicate(hipAr):
+    for word in hipAr:
+        string =word
+        #print(string)
+        #Counts each character present in the string  
+        for i in range(0, len(string)):  
+            count = 1;  
+            
+            for j in range(i+1, len(string)):  
+                if(string[i] == string[j] and string[i] != ' '):  
+                    count = count + 1;  
+                    #Set string[j] to 0 to avoid printing visited character  
+                    string = string[:j] + '0' + string[j+1:];  
+                # print(string)
+                # print(f"{string}:{duplicates}")
+            
+            #A character is considered as duplicate if count is greater than 1  
+            if(count > 1 and string[i] != '0'):  
+                duplicates.append(string[i])
+            else :
+                zero.append(string)
+
+    notZero =[]
+    for f in zero:
+        if("0" not in f):
+        
+            notZero.append(f)
+
+    for rep in notZero:
+        print(f"{len(rep)} : {rep}")
+        print(f"{notZero.count(rep)} : {rep}")
+        
+        if(len(rep)== notZero.count(rep)):
+            #print(rep)
+            global hipWord
+            hipWord = rep
+            single = True
+            break
+    
+
+
+    #hipWord = hipAr[0]
+
+            
+    print(notZero)           
+    print(hipAr) 
+    print(hipWord)
+    if(single != True):
+        return False
+    if(single==True):
+        return single
+    #print(duplicates)
+
+
+
+def getHips():
+
+    hipUrl = "https://random-data-api.com/api/hipster/random_hipster_stuff?"
+
+
+    req = urllib.request.Request(hipUrl)
+    requestData = json.loads(urllib.request.urlopen(req).read())
+
+    myHipster = RandomHipsterStuff(**requestData)
+
+
+    hipAr = myHipster.words
+    duplicated = delDuplicate(hipAr)
+    while duplicated== False:
+        getHips()
+    return hipWord
+
 count = 0
-hipWord = hipAr[0]
+
+duplicates = []
+duplicateDict={}
+duplicateIndex=[]
+zero = []
+hipWord= getHips()
+hipLetters = ""
+
+#print(hipAr)
+
+
+hipLetters = list(hipWord)
+guessedWrong= []
 correctIndex=[]
+
+hangedImgAr= [""" 
+     _____________
+     |/      |
+     |      
+     |
+    _|___
+   """,""" 
+     _____________
+     |/      |
+     |      (_)
+     |      
+     |
+    _|___
+   """,
+   """ 
+     _____________
+     |/      |
+     |      (_)
+     |       |
+     |       
+     |
+    _|___
+   """,""" 
+     _____________
+     |/      |
+     |      (_)
+     |      \|
+     |
+    _|___
+   """,
+   """ 
+     _____________
+     |/      |
+     |      (_)
+     |      \|/
+     |       
+     |
+    _|___
+   """,""" 
+     _____________
+     |/      |
+     |      (_)
+     |      \|/
+     |       |
+     |      / 
+     |
+    _|___
+   """,
+   """ 
+     _____________
+     |/      |
+     |      (_)
+     |      \|/
+     |       |
+     |      / \\
+     |
+    _|___
+   """]
 
 specialChar = ["!","@","#","$","%","^","&","*","(",")","-","+","[","}","{","]","="]
 guessedWords= []
@@ -45,13 +184,14 @@ def getInput() :
             #continue
         return guess
 
-def Ronda(hipAr):
-     hipWord = hipAr[0]
+def Ronda(hipWord):
+     
      lengthOfWord = len(hipWord)
         
   
      answeLine = ""
-     
+  
+
      for letra in correctWords:
          hipWord.index(letra)
          
@@ -62,31 +202,27 @@ def Ronda(hipAr):
 
         if(x in correctIndex):
          answeLine = answeLine + f"_{list(hipWord)[x]}__   "
+         
         else:
          answeLine = answeLine + "___   "
            
-   
-     print(""" 
-     _____________
-     |/      |
-     |      (_)
-     |      \|/
-     |       |
-     |      / \\
-     |
-    _|___
-   """)
+    
+     try:
+        print(hangedImgAr[len(guessedWrong)])
+     except:
+         print("YOU LOST")
+         sys.exit()
      print(f"Im thinking of a {lengthOfWord} letter word")
      print(answeLine)
-     print(hipWord)    
+    # print(hipWord)    
      guess = getInput()
      
-     hipLetters = list(hipWord)
+   
      print(hipLetters)
      for letter in hipLetters:
                 
                 if(guess == letter ):
-                    time.sleep(2)
+                    
                     correct = True
                    
                    
@@ -105,7 +241,7 @@ def Ronda(hipAr):
             correctWords.append(guess)
      else:
             print("You guessed wrong")
-            guessedWrong = guess
+            guessedWrong.append(guess)
 
  
      count = 0       
@@ -116,26 +252,22 @@ def Ronda(hipAr):
          finished = True
      else :
          finished = False
-    
-
-     
-
-
-
-
-def StartGame(hipAr):
+ 
+def StartGame(hipWord):
     welcome = input("Welcome to my super hipster hangman game?Wanna play?")
     if(welcome == "yes"):
         print("lets get started!!")
-        time.sleep(1)
+        #hipWord = getHips()
         for j in range(0,100):
-            Ronda(hipAr)
+            Ronda(hipWord)
             if len(hipWord)==len(correctWords) :
                  break
+            if(len(guessedWrong)== 6):
+                print("YOU LOST!")
             
             
              
-        print("game done")
+        print("YOU WINNN!!!!!")
 
 
     
@@ -147,6 +279,6 @@ def StartGame(hipAr):
 
 
 
-StartGame(hipAr)
+StartGame(hipWord)
 
 
