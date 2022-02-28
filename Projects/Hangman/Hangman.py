@@ -6,7 +6,7 @@ import json
 from xml.sax import parseString
 from RandomHipsterStuff import RandomHipsterStuff#import el class 
 
-import sys #
+import sys 
 
 
 
@@ -41,8 +41,8 @@ def delDuplicate(hipAr):#this function deletes words that have duplicated letter
             notZero.append(f)
 
     for rep in notZero:
-        print(f"{len(rep)} : {rep}")
-        print(f"{notZero.count(rep)} : {rep}")
+      #  print(f"{len(rep)} : {rep}")
+        #print(f"{notZero.count(rep)} : {rep}")
         
         if(len(rep)== notZero.count(rep)):
             #print(rep)
@@ -57,9 +57,9 @@ def delDuplicate(hipAr):#this function deletes words that have duplicated letter
     #hipWord = hipAr[0]
 
             
-    print(notZero)           
-    print(hipAr) 
-    print(hipWord)
+   # print(notZero)           
+   # print(hipAr) 
+   # print(hipWord)
     #if a word without duplicates was not found return False
     if(single != True):
         return False
@@ -85,7 +85,7 @@ def getHips():#Esta funcion busca los hipWords
 
     while duplicated== False:
         getHips()
-        print("no")
+       # print("no")
         #If no word without a duplicate was found call the function again
         
     return hipWord
@@ -99,7 +99,7 @@ zero = []
 try:
     hipWord= getHips()
 except:
-    sys.extit()
+   sys.exit()
 hipLetters = ""
 
 #print(hipAr)
@@ -190,9 +190,9 @@ def getInput() :#esta funcion filtra return el guess
             print("Can't include special characters")
             #if guess is special char
             continue
-       # if(guess in guessedWords):
-           # print("Bruh you already guessed it fracaso")
-            #continue
+        if(guess in guessedWords):
+            print("Bruh you already guessed it fracaso")
+            continue
         return guess
 
 def Ronda(hipWord):#Esta es la funcion repetida cada Ronda ovcio 
@@ -209,7 +209,7 @@ def Ronda(hipWord):#Esta es la funcion repetida cada Ronda ovcio
          #get the location of the word guessed in the word that is meant to be guessed
          correctIndex.append(hipWord.index(letra))
          #append all of the  lines should be filled to a list
-         print(correctIndex)
+        # print(correctIndex)
         
      for x in range(lengthOfWord):
 
@@ -225,9 +225,38 @@ def Ronda(hipWord):#Esta es la funcion repetida cada Ronda ovcio
         print(hangedImgAr[len(guessedWrong)])
         #Si el numero de fallos exede 5 pues se acabo el juego
      except:
-         print("YOU LOST")
+         #print("YOU LOST")
+         print("""
+                      _
+         (_) -
+               '
+       @_  _    '
+        )\/(@    '
+      __(/ \--._
+     (,-.---'--'@
+      @ )0_0(     _
+        ('-')    (_)
+   '    _\Y/_      
+   ' .-'-\-/-'-._  '
+   _ /    '*     \ '
+  (_)  /)  *    .-.))>'
+    ._/  \__*_ /\__'.
+'<((_'    |___/  \__\\
+          /   ,_/ |_|
+          )-- /   |x|
+          \ _/    (_ x
+          /_/       \_\@
+         /_/
+        /_/
+       /x/
+      (_ x
+        \_\@
+     QUE PAYASO LOL           
+                 """)
+         print(f"JAJAJ, the word was {hipWord}")
+
          sys.exit()
-     print(f"Im thinking of a {lengthOfWord} letter word")
+     print(f"Im thinking of a super cool rad {lengthOfWord} letter word")
      print(f"Guessed Wrong: {guessedWrong}")
      print(answeLine)
      #this print is repeted every round
@@ -235,7 +264,7 @@ def Ronda(hipWord):#Esta es la funcion repetida cada Ronda ovcio
      guess = getInput()
      #self explanitory
    
-     print(hipLetters)
+    # print(hipLetters)
      for letter in hipLetters:
                 
                 if(guess == letter ):
@@ -275,9 +304,24 @@ def Ronda(hipWord):#Esta es la funcion repetida cada Ronda ovcio
          finished = False
 
 def StartGame(hipWord):#Este es el Main FUnction
+    print("""
+   __________________                         __________________
+| _    _______    /  /                       | _    _______    /  /
+|(_) .d########b. //)| _____________________ |(_) .d########b. //)|
+|  .d############//  ||        _____        ||  .d############//  |
+| .d######""####//b. ||()||  [CARLOSQ]   |()|| .d######""####//b. |
+| 9######(  )#_//##P ||()|__|  | = |  |__|()|| 9######(  )#_//##P |
+| 'b######++#/_/##d' ||() ||   | = |   || ()|| 'b######++#/_/##d' |
+|  "9############P"  ||   ||   |___|   ||   ||  "9############P"  |
+|  _"9a#######aP"    ||  _   _____..__   _  ||  _"9a#######aP"    |
+| |_|  `######''     || (_) |_____||__| (_) || |_|  `######''     |
+|  ___..___________  ||_____________________||  ___..___________  |
+| |___||___________| |                       | |___||___________| |
+|____________________| COOL HIPSER BOOM BOX  |____________________|  
+    """)
     welcome = input("Welcome to my super hipster hangman game?Wanna play?")
     #welcome statement
-    if(welcome == "yes" or welcome == "sure" or welcome == "affirmative" or welcome == "okay" or welcome == "yea" or welcome == "all right" or welcome == "by all means" or welcome == "gladly" or welcome == "yep" or welcome == "very well"):
+    if(welcome == "yes" or welcome == "ok" or welcome == "sure" or welcome == "affirmative" or welcome == "okay" or welcome == "yea" or welcome == "all right" or welcome == "by all means" or welcome == "gladly" or welcome == "yep" or welcome == "very well"):
         #si una palabra afirmativa se usa pues LETS START DA GAME
         print("lets get started!!")
 
@@ -291,11 +335,42 @@ def StartGame(hipWord):#Este es el Main FUnction
                 #si brego pues exit el loop
             if(len(guessedWrong)== 6):
                 print("YOU LOST!")
+            
                 #si perdiste la mala
             
             
              
         print("YOU WINNN!!!!!")
+
+        print("""
+              @=====@
+                #=@       @=#_
+               # \/\/\/\/\/\ #\\
+               @@|  _   _  |@@(
+               @@|\|_|-|_|/|@@ )
+                @|    /\   |@ (
+                 |  \~~~~/ |   )
+                 |   ~~~~  |   |
+                  \_______/    |
+           _________|   |_______(____
+          /         \   /      (     `\\
+         /  / |  fvk \ /      |-\---,  \\
+ _______/  /__|_______@_______|__)___\  \________
+|\      \  \___   ______________#     |  |__     \\
+|\\\      /\ \  ', |\ # W W W W @@ \   /ooo  `,    \\
+||\\\    '  ooo   \\#\ # W W W W @@ \ '        \    \\
+|| \\\    \       ; \#\___o_o_o_o____\ \       ;     \\
+\|_|\\\    `,_____/  \|______________|  `,_____/      \\
+     \\\                                               \\
+      \\\     LETS GOOOOOOOOOOOOOOOOOOOOOOOOO!!!        \\
+       \\\_______________________________________________\\
+        \  ___________________________________________  |
+        || |                                         || |
+        || |                                         || |
+        || |                                         || |
+        \|_|                                         \|_| 
+       
+        """)
           
     else:
         print("awww")
