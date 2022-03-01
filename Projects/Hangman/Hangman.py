@@ -99,6 +99,7 @@ zero = []
 try:
     hipWord= getHips()
 except:
+    
    sys.exit()
 hipLetters = ""
 
@@ -255,7 +256,10 @@ def Ronda(hipWord):#Esta es la funcion repetida cada Ronda ovcio
                  """)
          print(f"JAJAJ, the word was {hipWord}")
 
-         sys.exit()
+         playAgain = input("Wanna loose again, i mean play again?!?!?")
+         if(playAgain == "yes" or playAgain == "ok" or playAgain == "sure" or playAgain == "affirmative" or playAgain == "okay" or playAgain == "yea" or playAgain == "all right" or playAgain == "by all means" or playAgain == "gladly" or playAgain == "yep" or playAgain == "very well"):
+            StartGame(hipWord)
+
      print(f"Im thinking of a super cool rad {lengthOfWord} letter word")
      print(f"Guessed Wrong: {guessedWrong}")
      print(answeLine)
@@ -341,6 +345,9 @@ def StartGame(hipWord):#Este es el Main FUnction
             
              
         print("YOU WINNN!!!!!")
+        playAgain = input("Wanna play again?")
+        if(playAgain == "yes" or playAgain == "ok" or playAgain == "sure" or playAgain == "affirmative" or playAgain == "okay" or playAgain == "yea" or playAgain == "all right" or playAgain == "by all means" or playAgain == "gladly" or playAgain == "yep" or playAgain == "very well"):
+            StartGame(hipWord)
 
         print("""
               @=====@
