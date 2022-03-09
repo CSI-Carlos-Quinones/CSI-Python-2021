@@ -1,14 +1,12 @@
 
 from multiprocessing.connection import wait
-import random
+import random 
 import urllib.request
 import json
 from xml.sax import parseString
 from RandomHipsterStuff import RandomHipsterStuff#import el class 
 
 import sys 
-
-
 
 
 
@@ -44,7 +42,7 @@ def delDuplicate(hipAr):#this function deletes words that have duplicated letter
       #  print(f"{len(rep)} : {rep}")
         #print(f"{notZero.count(rep)} : {rep}")
         
-        if(len(rep)== notZero.count(rep)):
+        if(len(rep)== notZero.count(rep)): 
             #print(rep)
             global hipWord
             hipWord = rep
