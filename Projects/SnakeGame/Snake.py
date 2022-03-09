@@ -7,7 +7,9 @@ pygame.display.set_caption('Snake game by Carlos Q')#Sts the caption for the gam
 game_over=False #Creates a variable to make th
 while not game_over:#Whie game not over do whats below
     for event in pygame.event.get(): #for every event in the game
-        print(event)   #prints out all the actions that take place on the screen
+        if event.type==pygame.QUIT:# is the exit button is pressed
+            game_over=True# the game is over
+ 
  
 pygame.quit()#quits the display
 quit()#quit the code as a whole
