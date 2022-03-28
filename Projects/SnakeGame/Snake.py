@@ -65,19 +65,19 @@ def gameLoop():  # creating a function
                 game_over = True# quit the game
             if event.type == pygame.KEYDOWN:# if a key is pressed
                 if event.key == pygame.K_LEFT:#check if the key is the left
-                    x1_change = -snake_block #change the x value of the snake
-                    y1_change = 0
-                elif event.key == pygame.K_RIGHT:
-                    x1_change = snake_block
-                    y1_change = 0
-                elif event.key == pygame.K_UP:
-                    y1_change = -snake_block
-                    x1_change = 0
-                elif event.key == pygame.K_DOWN:
-                    y1_change = snake_block
-                    x1_change = 0
+                    x1_change = -snake_block #change the x value of the snake negative 
+                    y1_change = 0 # dont change the y value
+                elif event.key == pygame.K_RIGHT: #check if the key is the rigth
+                    x1_change = snake_block #change the x value of the snake positively
+                    y1_change = 0 # dont change the y value
+                elif event.key == pygame.K_UP: #check if the key is the up
+                    y1_change = -snake_block #change the y value of the snake negative 
+                    x1_change = 0#dont change the x value
+                elif event.key == pygame.K_DOWN: #check if the key pressed is down
+                    y1_change = snake_block# change the y value of the snake positevely 
+                    x1_change = 0# doent change the x value
  
-        if x1 >= dis_width or x1 < 0 or y1 >= dis_height or y1 < 0:
+        if x1 >= dis_width or x1 < 0 or y1 >= dis_height or y1 < 0: #if you hit the 
             game_close = True #game is over
  
         x1 += x1_change#the x value of the rectangle is aded to the change in x vale defined
@@ -87,12 +87,12 @@ def gameLoop():  # creating a function
         pygame.draw.rect(dis, black, [x1, y1, snake_block, snake_block])
         pygame.display.update()# updates the display
  
-        if x1 == foodx and y1 == foody:
-            print("Yummy!!")
-        clock.tick(snake_speed)
+        if x1 == foodx and y1 == foody: # if the snake touches the food
+            print("Yummy!!") #prints Yummy
+        clock.tick(snake_speed) # make the game run at this velocity
  
-    pygame.quit()
-    quit()
+    pygame.quit() # quit the game
+    quit() # quit the code
  
  
-gameLoop()
+gameLoop() 
