@@ -11,7 +11,7 @@ black = (0, 0, 0)# defines the rgb for black
 red = (255, 0, 0)# defines the rgb for red
 blue = (0, 0, 255)# defines the rgb for blue
 green = (0, 255, 0)#defines the rgb for blue
-yellow = (255, 255, 102)
+yellow = (255, 255, 102)# defines the rgb value for yellow
 dis_width = 800# defines the width of display
 dis_height  = 600# defines the heigth of display
  
@@ -20,8 +20,8 @@ pygame.display.set_caption('Snake game by Carlos Q')#Starts the caption for the 
 
 clock = pygame.time.Clock()#the velocity of the game is defined
  
-snake_block = 10
-snake_speed = 15
+snake_block = 10 # defines the variable where the snake starts
+snake_speed = 15 # sets the speed for the game to 15 tics 
  
 font_style = pygame.font.SysFont("bahnschrift", 25) # sets the font to be bahnschrift
 score_font = pygame.font.SysFont("comicsansms", 35)# sets the font to be comicsansms
@@ -32,15 +32,14 @@ def Your_score(score):#creates a function to show score
     dis.blit(value, [0, 0]) # Dislpays the score on the game screen
  
  
- 
 def our_snake(snake_block, snake_list):#Function that creates the snake
-    for x in snake_list: # creates a loop for when 
+    for x in snake_list: # creates a loop
         pygame.draw.rect(dis, black, [x[0], x[1], snake_block, snake_block])# creates the snake in the middle of the game
  
  
 def message(msg, color): #Function that renders a message ith a function
-    mesg = font_style.render(msg, True, color) #
-    dis.blit(mesg, [dis_width / 6, dis_height / 3])
+    mesg = font_style.render(msg, True, color) #Creates a message with the given color and given string
+    dis.blit(mesg, [dis_width / 6, dis_height / 3]) # Defines the width of the distance as 6 and defines the hegith of the message as a thrid to the display
  
  
 def gameLoop(): #Function that creates the game 
@@ -53,7 +52,7 @@ def gameLoop(): #Function that creates the game
     x1_change = 0# At the start of the game there is no state of change in x
     y1_change = 0 #At the start of the game there is no state of change in y
  
-    snake_List = []
+    snake_List = [] 
     Length_of_snake = 1 # the length of the snake is one at the begining of the game
  
     foodx = round(random.randrange(0, dis_width - snake_block) / 10.0) * 10.0 # sets the x value of the food to a randmo number
